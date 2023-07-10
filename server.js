@@ -1,18 +1,15 @@
-// 36u7CkPSSlA7u02f
-
 const mongoose = require("mongoose");
 
 const app = require("./app");
 
-const DB_HOST =
-  "mongodb+srv://Nastya:36u7CkPSSlA7u02f@cluster0.z8d4yi0.mongodb.net/contacts_reader?retryWrites=true&w=majority";
+const { DB_HOST, PORT = 3000 } = process.env;
 
 mongoose.set("strictQuery", true);
 
 mongoose
   .connect(DB_HOST)
   .then(() =>
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
       console.log("Database connection successful");
     })
   )
